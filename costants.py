@@ -1,7 +1,6 @@
 from os.path import join, dirname, isabs
 from os import getenv
 from src.parser import Parser
-import json
 
 import __main__
 
