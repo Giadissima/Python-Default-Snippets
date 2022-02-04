@@ -14,7 +14,8 @@ class Parser:
             "-l", "--logpath", required=False, type=str, help="Set where you want to save info and error logs")
         self.parser.add_argument(
             "-ic", "--imgcategories", required=False, type=list, help="Set images's categories of each folder")
-      
+        self.parser.add_argument(
+            "-dev", "--dev_mode", required=False, type=str, help="Set development mode. Default value: True")
 
         return vars(self.parser.parse_args())
 

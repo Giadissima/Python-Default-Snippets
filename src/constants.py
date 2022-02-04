@@ -36,6 +36,8 @@ IMAGES_PATH = check_if_abs(BASE_PATH, check_if_env_or_arg("imagespath", "IMAGES_
 BASE_LOG_PATH = check_if_env_or_arg("logpath", "LOG_PATH", args, "log")
 LOG_PATH = join(BASE_LOG_PATH, "debug.log")
 ERROR_LOG_PATH = join(BASE_LOG_PATH, "error.log")
+DEV_MODE = check_if_env_or_arg("dev_mode", "DEV_MODE", args, "True")
+DEV_MODE = DEV_MODE.lower() == 'true'
 
 # IMAGES
 IMG_CATEGORIES = check_if_env_or_arg("imgcategories", "IMG_CATEGORIES", args, ['pippo', 'jack'])
