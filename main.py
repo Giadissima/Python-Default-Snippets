@@ -1,4 +1,4 @@
-from src.costants import ERROR_LOG_PATH, LOG_PATH
+from src.constants import ERROR_LOG_PATH, LOG_PATH
 from src.logger import Logger
 from logging import DEBUG, ERROR
 import sys
