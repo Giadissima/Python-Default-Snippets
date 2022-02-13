@@ -1,7 +1,13 @@
+from traceback import format_exc
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from src.files import create_multiple_file
 from src.constants import ERROR_LOG_PATH, LOG_PATH, DEV_MODE
 from src.logger import Logger
 from logging import DEBUG, ERROR
+
 import sys
 
 # from logger.py
@@ -20,4 +26,4 @@ if __name__ == "__main__":
         if DEV_MODE == False:                    # catch *all* exceptions
             error_log.critical("Unexpected error: " + str(sys.exc_info()[0]) + " : " + str(sys.exc_info()[1]))
         else:
-            print(e)
+            print(format_exc())
