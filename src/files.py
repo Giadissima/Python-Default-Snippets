@@ -23,3 +23,9 @@ def create_multiple_file(*paths):
       f.close()
     except PermissionError:
       print("errore di permesso nell'accedere al file")
+
+# s = string to search into file
+def searching_string_in_file(path, s):
+  with open(path, "r") as txt_file:
+    if str(s) in txt_file.readlines(): return True
+  return False

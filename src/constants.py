@@ -1,5 +1,6 @@
 from os.path import join, dirname, isabs
 from os import getenv
+from exception import EnvMissing
 from src.parser import Parser
 
 import __main__
@@ -19,6 +20,8 @@ def check_if_env_or_arg(name, name_env, args, default):
         if isinstance(default, list):
             return list(getenv(name_env).split(" "))
         return getenv(name_env)
+    if type(default) == EnvMissing:
+        raise default
     return default
 
 # join two path if the second path is relative, otherwise return only the secind path
@@ -43,3 +46,11 @@ DEV_MODE = DEV_MODE.lower() == 'true'
 IMG_CATEGORIES = check_if_env_or_arg("imgcategories", "IMG_CATEGORIES", args, ['pippo', 'jack'])
 IMG_SIZE = check_if_env_or_arg("imagesize", "IMG_SIZE", args, 100)
 
+# BOT TELEGRAM
+BOT_TOKEN = check_if_env_or_arg("defaultdb", "DEFAULT_DB", args, EnvMissing("DEFAULT_DB"))
+
+# MYSQL CONFIG
+MYSQL_USERNAME = check_if_env_or_arg("mysql_username", "MYSQL_USERNAME", args, EnvMissing("MYSQL_USERNAME"))
+MYSQL_PASSWORD = check_if_env_or_arg("mysql_password", "MYSQL_PASSWORD", args, "")
+MYSQL_HOST = check_if_env_or_arg("mysql_host", "MYSQL_HOST", args, EnvMissing("MYSQL_HOST"))
+MYSQL_DB = check_if_env_or_arg("mysql_database", "MYSQL_DATABASE", args, EnvMissing("MYSQL_DATABASE"))
